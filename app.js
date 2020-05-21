@@ -77,6 +77,7 @@ function clearItems() {
   }
   container.classList.remove('show-container');
   displayAlert('empty list', 'success');
+  setBackToDefault();
   //localStorage.removeItem("list")
 }
 
