@@ -40,6 +40,10 @@ function addItem(e) {
                 <i class="fas fa-trash"></i>
               </button>
             </div>`;
+    const deleteBtn = element.querySelector('.delete-btn');
+    const editBtn = element.querySelector('.edit-btn');
+    deleteBtn.addEventListener('click', deleteItem);
+    editBtn.addEventListener('click', editItem);
     //append child
     list.appendChild(element);
     //display alert
@@ -65,7 +69,7 @@ function displayAlert(text, action) {
   setTimeout(function () {
     alert.textContent = '';
     alert.classList.remove(`alert-${action}`);
-  }, 2000);
+  }, 1000);
 }
 //clear items
 function clearItems() {
@@ -79,6 +83,20 @@ function clearItems() {
   displayAlert('empty list', 'success');
   setBackToDefault();
   //localStorage.removeItem("list")
+}
+
+//delete function
+function deleteItem(e) {
+  const element = e.currentTarget.parentElement.parentElement;
+  list.removeChild(element);
+  if (list.children.length === 0) {
+    container.classList.remove('show-container');
+  }
+  displayAlert('item removed', 'danger');
+}
+//edit function
+function editItem() {
+  console.log('edited');
 }
 
 //set back to default
